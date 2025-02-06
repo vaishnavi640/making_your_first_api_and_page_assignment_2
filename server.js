@@ -18,10 +18,8 @@ const statusDescriptions = {
     504: "Gateway Timeout: The server was acting as a gateway or proxy and did not receive a timely response from the upstream server."
 };
 
-// GET endpoint to provide status code information
 app.get('/status-info', (req, res) => {
-    const code = parseInt(req.query.code, 10); // Parse the "code" query parameter as an integer
-
+    const code = parseInt(req.query.code, 10); 
     if (!code || !statusDescriptions[code]) {
         return res.status(400).json({
             status: 400,
@@ -29,7 +27,7 @@ app.get('/status-info', (req, res) => {
         });
     }
 
-    // Respond with the status code and its description
+  
     res.json({
         status: code,
         message: statusDescriptions[code]
